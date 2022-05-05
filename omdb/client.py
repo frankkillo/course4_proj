@@ -41,11 +41,16 @@ class OmdbMovie:
     def runtime_minutes(self):
         self.check_for_detail_data_key("Runtime")
 
-        rt, units = self.data["Runtime"].split(" ")
+        runtime = self.data["Runtime"]
+
+        if runtime =='N/A':
+            return
+
+        rt, units = runtime.split()
 
         if units != "min":
             raise ValueError(
-              f"Expected units 'min' for runtime. Got '{units}")
+            f"Expected units 'min' for runtime. Got '{units}")
 
         return int(rt)
 
