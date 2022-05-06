@@ -72,3 +72,5 @@ def search_and_save(search):
 
         if created:
             logger.info("Movie created: '%s'", movie.title)
+
+    search_term.save()
